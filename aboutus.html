@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - HospiLink</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f7f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #0047ab, #6495ED);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            margin: 4rem 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #0047ab;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #0047ab;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .mission-statement {
+            font-size: 1.3rem;
+            font-weight: 300;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-img {
+            height: 250px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+        }
+        
+        .member-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #0047ab;
+        }
+        
+        .member-title {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #0047ab;
+        }
+        
+        .benefit-card h3 {
+            margin-bottom: 1rem;
+            color: #0047ab;
+        }
+        
+        .cta {
+            background-color: #0047ab;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            margin: 4rem 0 0;
+        }
+        
+        .cta h2 {
+            color: white;
+        }
+        
+        .cta h2::after {
+            background-color: white;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: white;
+            color: #0047ab;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .team-grid, .benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HospiLink</h1>
+            <p>Navigating Healthcare, Simplifying Lives</p>
+        </div>
+    </header>
+    
+    <main>
+        <section class="container">
+            <br>
+            <p class="mission-statement">At HospiLink, we're dedicated to transforming the hospital navigation experience. We understand the stress and confusion that comes with finding your way through complex medical facilities, which is why we've created a solution that guides patients confidently to their appointments.</p>
+        </section>
+        
+       
+        
+        <section class="container">
+            <h2>Our Story</h2>
+            <p>HospiLink was born from a simple yet powerful observation: too many people miss medical appointments or arrive stressed and late because they got lost in hospital corridors. What started as a public service project has evolved into a comprehensive navigation solution that's transforming the patient experience.</p>
+            <p>Our journey began when our founders experienced firsthand the frustration of navigating complex hospital buildings. After witnessing elderly patients, anxious families, and even hospital staff struggle with directions, we knew there had to be a better way.</p>
+            <p>Today, HospiLink combines cutting-edge technology with compassionate design to create navigation solutions that work for everyone, regardless of age or tech-savviness.</p>
+        </section>
+        
+        <section class="container">
+            <h2>Why HospiLink Matters</h2>
+            <div class="benefits">
+                <div class="benefit-card">
+                    <h3>Reducing Missed Appointments</h3>
+                    <p>By providing clear, personalized directions, we help ensure patients arrive at their appointments on time, improving healthcare outcomes and system efficiency.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Decreasing Patient Stress</h3>
+                    <p>Getting lost in a hospital adds unnecessary anxiety to an already stressful situation. Our navigation tools provide peace of mind when it's needed most.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Improving Hospital Operations</h3>
+                    <p>When patients arrive on time and staff spend less time giving directions, hospitals can operate more efficiently and focus on what matters most: patient care.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Making Healthcare Accessible</h3>
+                    <p>We believe that getting lost should never be a barrier to receiving care. Our solutions make healthcare facilities more accessible to everyone.</p>
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-img">[Team Member Photo]</div>
+                    <div class="member-info">
+                        <h3 class="member-name">Jane Chen</h3>
+                        <p class="member-title">Co-Founder & CEO</p>
+                        <p>With a background in healthcare administration, Jane recognized the challenges patients face when navigating large medical complexes. Her vision drives our mission to make hospitals more accessible for everyone.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-img">[Team Member Photo]</div>
+                    <div class="member-info">
+                        <h3 class="member-name">Marcus Williams</h3>
+                        <p class="member-title">Co-Founder & Technical Lead</p>
+                        <p>Marcus brings his expertise in software development and location-based technologies to create intuitive navigation solutions that work seamlessly inside complex building structures.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-img">[Team Member Photo]</div>
+                    <div class="member-info">
+                        <h3 class="member-name">Priya Sharma</h3>
+                        <p class="member-title">UX Designer</p>
+                        <p>Priya's human-centered design approach ensures that HospiLink is accessible to users of all ages and technical abilities, making hospital navigation stress-free and intuitive.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-img">[Team Member Photo]</div>
+                    <div class="member-info">
+                        <h3 class="member-name">David Lee</h3>
+                        <p class="member-title">Operations Manager</p>
+                        <p>David works directly with hospital administrators to implement HospiLink systems, ensuring seamless integration with existing hospital infrastructure and appointment systems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta">
+            <div class="container">
+                <h2>Join Our Journey</h2>
+                <p>We're continuously working to improve hospital navigation across the country. Whether you're a healthcare administrator, technology partner, or potential team member, we'd love to connect with you.</p>
+                <a href="#contact" class="cta-button">Get In Touch</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 HospiLink. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for image placeholders - can be replaced when actual images are added
+        document.addEventListener('DOMContentLoaded', function() {
+            const memberImgs = document.querySelectorAll('.member-img');
+            
+            memberImgs.forEach(img => {
+                img.addEventListener('click', function() {
+                    alert('This is a placeholder for team member images. You can replace these with actual photos later.');
+                });
+            });
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

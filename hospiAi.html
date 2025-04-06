@@ -833,7 +833,7 @@ class HealthcareAssistant {
         
         // Build response message
         responseMessage = `Based on your reported symptoms (${foundSymptoms.join(", ")}), here are some possible conditions to consider:\n\n`;
-        sortedConditions.forEach(condition => {
+        sortedConditions.forEach(condition => {  
             responseMessage += `• ${condition.charAt(0).toUpperCase() + condition.slice(1)}\n`;
         });
         
