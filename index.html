@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HospiLink - Hospital Navigation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      overflow: hidden;
+      background-color: #f8fbff;
+    }
+    
+    .intro-animation {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      background-color: white;
+    }
+    
+    .loading-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    
+    .loading-spinner {
+      width: 80px;
+      height: 80px;
+      border: 4px solid rgba(0, 122, 255, 0.1);
+      border-left-color: #007aff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    .door-left, .door-right {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      background-color: white;
+      top: 0;
+      z-index: 1500;
+      transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+    }
+    
+    .door-left {
+      left: 0;
+      transform: translateX(0);
+    }
+    
+    .door-right {
+      right: 0;
+      transform: translateX(0);
+    }
+    
+    .content-container {
+      position: relative;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    
+    .logo-container {
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    .logo {
+      font-size: 52px;
+      font-weight: 700;
+      color: #007aff;
+      letter-spacing: -1px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo span {
+      color: #333;
+    }
+    
+    .logo-icon {
+      font-size: 28px;
+      margin-right: 8px;
+      background-color: #007aff;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: rotate(0deg);
+      transition: transform 1s ease;
+    }
+    
+    .welcome-text {
+      font-size: 22px;
+      color: #555;
+      margin-bottom: 40px;
+      text-align: center;
+      max-width: 600px;
+    }
+    
+    .enter-button {
+      padding: 16px 40px;
+      background-color: #007aff;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    
+    .enter-button:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 122, 255, 0.3);
+    }
+    
+    .particles-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 500;
+    }
+    
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(0, 122, 255, 0.2);
+      opacity: 0.5;
+    }
+    
+    .pulse-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 122, 255, 0.2);
+      opacity: 0;
+      transform: scale(0);
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(0); opacity: 0.8; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="intro-animation">
+    <div class="loading-overlay">
+      <div class="loading-spinner"></div>
+    </div>
+    
+    <div class="door-left"></div>
+    <div class="door-right"></div>
+    
+    <div class="particles-container" id="particles"></div>
+    
+    <div class="content-container">
+      <div class="logo-container">
+        <div class="logo">
+          <div class="logo-icon">H</div>
+          <div>Hospi<span>Link</span></div>
+        </div>
+      </div>
+      
+      <div class="welcome-text">
+        Navigate Hospitals with ease
+      </div>
+      
+      <a href="login.html">
+        <button class="enter-button">Enter</button>
+      </a>
+      
+      <style> a{
+        text-decoration: none;
+        color: inherit;
+        
+      } </style>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+  // Create particles
+  createParticles();
+  createPulseCircles();
+  
+  // Start animation sequence
+  setTimeout(hideLoadingOverlay, 1100);
+  
+  // Remove the click event listener since we're using an anchor tag for navigation
+  // The anchor tag within the button will handle the redirection to home.html
+});
+
+function hideLoadingOverlay() {
+  const loadingOverlay = document.querySelector('.loading-overlay');
+  loadingOverlay.style.opacity = '0';
+  
+  setTimeout(() => {
+    loadingOverlay.style.display = 'none';
+    startDoorAnimation();
+  }, 500);
+}
+
+function startDoorAnimation() {
+  const doorLeft = document.querySelector('.door-left');
+  const doorRight = document.querySelector('.door-right');
+  
+  doorLeft.style.transform = 'translateX(-100%)';
+  doorRight.style.transform = 'translateX(100%)';
+  
+  setTimeout(showContent, 1000);
+}
+
+function showContent() {
+  const contentContainer = document.querySelector('.content-container');
+  contentContainer.style.opacity = '1';
+  contentContainer.style.transform = 'translateY(0)';
+  
+  const logoIcon = document.querySelector('.logo-icon');
+  logoIcon.style.transform = 'rotate(360deg)';
+  
+  setTimeout(() => {
+    const enterButton = document.querySelector('.enter-button');
+    enterButton.style.transition = 'opacity 1s ease, transform 0.5s ease, box-shadow 0.3s ease';
+    enterButton.style.opacity = '1';
+    enterButton.style.transform = 'scale(1)';
+  }, 800);
+}
+
+// This function is no longer needed since we're using an anchor tag
+// If you want to keep the fade-out effect, you can add it to the anchor click event
+
+function createParticles() {
+  const container = document.getElementById('particles');
+  
+  for (let i = 0; i < 30; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    
+    // Random size
+    const size = Math.random() * 15 + 5;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    
+    // Random position
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+    
+    // Random animation
+    const duration = Math.random() * 20 + 10;
+    particle.style.animation = `float ${duration}s infinite alternate ease-in-out`;
+    particle.style.animationDelay = `${Math.random() * 5}s`;
+    
+    container.appendChild(particle);
+  }
+}
+
+function createPulseCircles() {
+  const container = document.getElementById('particles');
+  
+  const createPulse = () => {
+    const pulse = document.createElement('div');
+    pulse.classList.add('pulse-circle');
+    
+    // Random position
+    pulse.style.left = `${Math.random() * 100}%`;
+    pulse.style.top = `${Math.random() * 100}%`;
+    
+    // Random size
+    const size = Math.random() * 100 + 50;
+    pulse.style.width = `${size}px`;
+    pulse.style.height = `${size}px`;
+    
+    // Animation
+    pulse.style.animation = 'pulse 4s ease-out forwards';
+    
+    container.appendChild(pulse);
+    
+    // Remove after animation completes
+    setTimeout(() => {
+      pulse.remove();
+    }, 4000);
+  };
+  
+  // Create initial pulses
+  for (let i = 0; i < 5; i++) {
+    setTimeout(createPulse, i * 800);
+  }
+  
+  // Continue creating pulses every 2 seconds
+  setInterval(createPulse, 2000);
+}
+  </script>
+</body>
+</html>
+
