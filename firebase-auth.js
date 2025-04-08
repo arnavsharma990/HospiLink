@@ -142,13 +142,40 @@ googleButtons.forEach(button => {
   }
 });
 
+// Check if we're on the login page
+const isLoginPage = window.location.pathname.includes('login') || 
+                   window.location.pathname.endsWith('/') || 
+                   window.location.pathname.endsWith('.html');
+
 // Check if user is already signed in
 auth.onAuthStateChanged(user => {
-  if (user) {
-    // User is signed in, redirect to home page
-    window.location.href = "home.html";
+  if (user && isLoginPage) {
+    // Add a small delay to allow the user to see the login page first
+    // and potentially log out if needed
+    setTimeout(() => {
+      console.log("User already signed in, redirecting to home page");
+      window.location.href = "home.html";
+    }, 1000); // 1 second delay
+  } else {
+    // Make sure the login forms are visible when no user is logged in
+    if (signinForm && signupForm) {
+      signinForm.style.display = 'flex';
+      signinForm.classList.add('active');
+    }
   }
 });
+
+// Add a logout function for convenience
+window.logout = function() {
+  auth.signOut().then(() => {
+    console.log("Logged out successfully");
+    if (!isLoginPage) {
+      window.location.href = "index.html"; // Redirect to login page
+    }
+  }).catch((error) => {
+    console.error("Error signing out:", error);
+  });
+};
 
 // Add these styles to the document to enable smooth transitions
 const styleTag = document.createElement('style');
