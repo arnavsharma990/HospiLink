@@ -6,6 +6,8 @@
     <title>HospiLink - Login/Signup</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -680,6 +682,20 @@
             <div class="decorative-circle circle-2"></div>
             <div class="decorative-circle circle-3"></div>
         </main>
+    <script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyC-reUZrvsdL7okXQpKYFroxC6irNy5XMU",
+  authDomain: "loginpage-b1b24.firebaseapp.com",
+  projectId: "loginpage-b1b24",
+  storageBucket: "loginpage-b1b24.firebasestorage.app",
+  messagingSenderId: "871935597767",
+  appId: "1:871935597767:web:8a437f39c1ea5b98c9f2e2",
+  measurementId: "G-886ZEPLWPS"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
+
         <!-- Firebase SDK -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
@@ -741,8 +757,29 @@
 
             
         </script>
-        
-     
+        <script>
+  const provider = new firebase.auth.GoogleAuthProvider();
+
+  document.getElementById('google-login').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    firebase.auth().signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        console.log("Signed in as:", user.displayName);
+        // You can redirect to dashboard or show user info here
+        window.location.href = "dashboard.html"; // or any other page
+      })
+      .catch((error) => {
+        console.error("Google Sign-In Error:", error.message);
+      });
+  });
+</script>
+
+     <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth-compat.js"></script>
+
 
     </body>
     </html>
