@@ -1,10 +1,21 @@
-// Import the functions you need from the Firebase SDKs
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+import { 
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signInAnonymously,
+  RecaptchaVerifier,
+  signInWithPhoneNumber
+} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
 
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
 
-// Your Firebase Configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyAjUJB7BzinPjxqp6iRPFE0F3z83UgJ_Jg",
   authDomain: "login-f647e.firebaseapp.com",
@@ -15,12 +26,12 @@ const firebaseConfig = {
   measurementId: "G-HLRQT6YXES"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app); // ✅ Initialize auth
+const auth = getAuth(app); // 
 const analytics = getAnalytics(app);
 
-// ✅ Signup Function
+
 document.getElementById("signup-form").addEventListener("submit", function (e) {
     e.preventDefault();
     
@@ -45,7 +56,7 @@ document.getElementById("signup-form").addEventListener("submit", function (e) {
         });
 });
 
-// ✅ Login Function
+
 document.getElementById("signin-form").addEventListener("submit", function (e) {
     e.preventDefault();
     
@@ -64,7 +75,7 @@ document.getElementById("signin-form").addEventListener("submit", function (e) {
         });
 });
 
-// ✅ Logout Function
+
 window.logout = function () {
     signOut(auth).then(() => {
         alert("Logout Successful!");
@@ -74,5 +85,86 @@ window.logout = function () {
     });
 };
 
-// ✅ Export auth (Only if needed in another module)
+const googleProvider = new GoogleAuthProvider();
+
+document.getElementById("google-signin").addEventListener("click", () => {
+  signInWithPopup(auth, googleProvider)
+    .then((result) => {
+      console.log("Google User:", result.user);
+      alert("Google Sign-In Successful!");
+      window.location.href = "dashboard.html";
+    })
+    .catch((error) => {
+      console.error("Google Sign-In Error:", error.message);
+    });
+});
+
+document.getElementById("anonymous-signin").addEventListener("click", () => {
+  signInAnonymously(auth)
+    .then(() => {
+      console.log("Signed in anonymously");
+      alert("Anonymous Sign-In Successful!");
+      window.location.href = "dashboard.html";
+    })
+    .catch((error) => {
+      console.error("Anonymous Sign-In Error:", error.message);
+    });
+});
+
+window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+  'size': 'invisible',
+  'callback': (response) => {
+    console.log("reCAPTCHA Verified");
+  }
+});
+
+
+document.getElementById("phone-signin").addEventListener("click", () => {
+  const phoneNumber = document.getElementById("phone-number").value;
+  const appVerifier = window.recaptchaVerifier;
+
+  signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    .then((confirmationResult) => {
+      const code = prompt("Enter the OTP sent to your phone:");
+      return confirmationResult.confirm(code);
+    })
+    .then((result) => {
+      console.log("Phone User:", result.user);
+      alert("Phone Sign-In Successful!");
+      window.location.href = "dashboard.html";
+    })
+    .catch((error) => {
+      console.error("Phone Sign-In Error:", error.message);
+    });
+});
+
+window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+  'size': 'invisible',
+  'callback': (response) => {
+    console.log("reCAPTCHA Verified");
+  }
+});
+
+
+document.getElementById("phone-signin").addEventListener("click", () => {
+  const phoneNumber = document.getElementById("phone-number").value;
+  const appVerifier = window.recaptchaVerifier;
+
+  signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    .then((confirmationResult) => {
+      const code = prompt("Enter the OTP sent to your phone:");
+      return confirmationResult.confirm(code);
+    })
+    .then((result) => {
+      console.log("Phone User:", result.user);
+      alert("Phone Sign-In Successful!");
+      window.location.href = "dashboard.html";
+    })
+    .catch((error) => {
+      console.error("Phone Sign-In Error:", error.message);
+    });
+});
+
+
+
 export { auth };
