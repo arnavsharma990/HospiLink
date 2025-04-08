@@ -17,13 +17,13 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAjUJB7BzinPjxqp6iRPFE0F3z83UgJ_Jg",
-  authDomain: "login-f647e.firebaseapp.com",
-  projectId: "login-f647e",
-  storageBucket: "login-f647e.appspot.com",
-  messagingSenderId: "750923276060",
-  appId: "1:750923276060:web:fbd555bcc191e831a724d9",
-  measurementId: "G-HLRQT6YXES"
+   apiKey: "AIzaSyC-reUZrvsdL7okXQpKYFroxC6irNy5XMU",
+  authDomain: "loginpage-b1b24.firebaseapp.com",
+  projectId: "loginpage-b1b24",
+  storageBucket: "loginpage-b1b24.firebasestorage.app",
+  messagingSenderId: "871935597767",
+  appId: "1:871935597767:web:8a437f39c1ea5b98c9f2e2",
+  measurementId: "G-886ZEPLWPS"
 };
 
 
