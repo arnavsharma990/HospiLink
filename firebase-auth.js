@@ -16,6 +16,41 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const signinForm = document.getElementById('signin-form');
 const signupForm = document.getElementById('signup-form');
+const signinTab = document.getElementById('signin-tab');
+const signupTab = document.getElementById('signup-tab');
+
+// Tab switching functionality with smooth transitions
+signinTab.addEventListener('click', () => {
+  // Add transition class for smooth slide effect
+  signinForm.style.transform = 'translateX(0)';
+  signupForm.style.transform = 'translateX(100%)';
+  
+  // Update active tabs
+  signinTab.classList.add('active');
+  signupTab.classList.remove('active');
+  
+  // After transition, update active class for proper visibility
+  setTimeout(() => {
+    signinForm.classList.add('active');
+    signupForm.classList.remove('active');
+  }, 300);
+});
+
+signupTab.addEventListener('click', () => {
+  // Add transition class for smooth slide effect
+  signinForm.style.transform = 'translateX(-100%)';
+  signupForm.style.transform = 'translateX(0)';
+  
+  // Update active tabs
+  signupTab.classList.add('active');
+  signinTab.classList.remove('active');
+  
+  // After transition, update active class for proper visibility
+  setTimeout(() => {
+    signupForm.classList.add('active');
+    signinForm.classList.remove('active');
+  }, 300);
+});
 
 // Email/Password Sign Up
 signupForm.addEventListener('submit', function(e) {
@@ -114,3 +149,31 @@ auth.onAuthStateChanged(user => {
     window.location.href = "home.html";
   }
 });
+
+// Add these styles to the document to enable smooth transitions
+const styleTag = document.createElement('style');
+styleTag.textContent = `
+  .signin-form, .signup-form {
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .signin-form.active, .signup-form.active {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .form-container {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+  }
+`;
+document.head.appendChild(styleTag);
+
+// Initialize form positions
+signinForm.style.transform = 'translateX(0)';
+signupForm.style.transform = 'translateX(100%)';
