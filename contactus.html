@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | HospiLink</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f9ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background-color: #1a56db;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #a3c2ff;
+        }
+        
+        .contact-banner {
+            background-color: #2563eb;
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 3rem auto;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-info {
+            flex: 1;
+            padding: 3rem;
+            background: #1e429f;
+            color: white;
+            min-width: 300px;
+        }
+        
+        .info-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+        
+        .info-item {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .info-icon {
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .info-text {
+            line-height: 1.5;
+        }
+        
+        .info-text h3 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .info-text p, .info-text a {
+            color: #d1e0ff;
+            text-decoration: none;
+        }
+        
+        .info-text a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 2rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: 0.3s;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .social-icon:hover {
+            background: white;
+            color: #1e429f;
+        }
+        
+        .contact-form {
+            flex: 2;
+            padding: 3rem;
+            min-width: 300px;
+        }
+        
+        .form-title {
+            color: #1a56db;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background-color: #1a56db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #1e429f;
+        }
+        
+        .map-container {
+            height: 400px;
+            margin: 3rem auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .map-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .footer {
+            background-color: #1a56db;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            margin: 1rem;
+            min-width: 250px;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #d1e0ff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            color: #d1e0ff;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin: 0 10px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .contact-info, .contact-form {
+                flex: 100%;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">
+                    <span class="logo-icon">+</span>
+                    HospiLink
+                </a>
+                <ul class="nav-links">
+                    <li><a href="home.html">Explore</a></li>
+                   
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Contact Banner -->
+    <section class="contact-banner">
+        <div class="container">
+            <h1 class="page-title">Contact Us</h1>
+            <p class="subtitle">Have questions about our services? Need support? We're here to help you with all your healthcare connectivity needs.</p>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <div class="container">
+        <div class="contact-container">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h2 class="info-title">Get in Touch</h2>
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <h3>Our Location</h3>
+                        <p>Delhi<br>India<br>110092</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-text">
+                        <h3>Phone</h3>
+                        <p>+91 9958198919</p>
+                        
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">✉️</div>
+                    <div class="info-text">
+                        <h3>Email</h3>
+                        <a href="mailto:support@hospilink.com">support@hospilink.com</a>
+                        <p>We respond within 24 hours</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="www.facebook.com" class="social-icon">f</a>
+                    <a href="www.instagram.com" class="social-icon">in</a>
+                    <a href="www.twitter.com" class="social-icon">🐦</a>
+                    <a href="www.instagram.com" class="social-icon">ig</a>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2 class="form-title">Send Us a Message</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Your email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" class="form-control" placeholder="What is this regarding?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" class="form-control" placeholder="Tell us how we can help you"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Map -->
+        <div class="map-container">
+            <img src="/api/placeholder/1200/400" alt="Map location of HospiLink office">
+        </div>
+    </div>
+    
+    <!-- FAQ Section -->
+    <div class="container">
+        <h2 style="color: #1a56db; text-align: center; margin-bottom: 2rem; font-size: 2rem;">Frequently Asked Questions</h2>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 3rem;">
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: #1a56db; margin-bottom: 0.5rem;">What services does HospiLink offer?</h3>
+                <p>HospiLink provides integrated healthcare connectivity solutions for hospitals, clinics, and medical practices. Our services include patient record management, appointment scheduling systems, and secure medical data transfer platforms.</p>
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: #1a56db; margin-bottom: 0.5rem;">How quickly can we implement HospiLink at our facility?</h3>
+                <p>Implementation timelines vary based on the size of your facility and specific requirements. Typically, our systems can be fully operational within 2-4 weeks of contract approval. Our team works closely with your staff to ensure a smooth transition.</p>
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: #1a56db; margin-bottom: 0.5rem;">Is HospiLink HIPAA compliant?</h3>
+                <p>Yes, HospiLink is fully HIPAA compliant. We maintain the highest standards of data security and patient confidentiality across all our products and services. Our systems undergo regular security audits and updates.</p>
+            </div>
+            
+            <div>
+                <h3 style="color: #1a56db; margin-bottom: 0.5rem;">Do you offer customer support after implementation?</h3>
+                <p>Absolutely! We provide 24/7 technical support for all our clients. Additionally, we offer regular training sessions, system updates, and dedicated account managers to address any ongoing needs or questions.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">HospiLink</h3>
+                    <p>Connecting healthcare providers with innovative solutions for better patient care.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Resources</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Patient Record Management</a></li>
+                        <li><a href="#">Appointment Scheduling</a></li>
+                        <li><a href="#">Medical Data Transfer</a></li>
+                        <li><a href="#">Healthcare Analytics</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates.</p>
+                    <div style="display: flex; margin-top: 1rem;">
+                        <input type="email" placeholder="Your email" style="padding: 10px; flex: 1; border: none; border-radius: 4px 0 0 4px;">
+                        <button style="background: white; color: #1a56db; border: none; padding: 10px 15px; border-radius: 0 4px 4px 0; cursor: pointer;">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HospiLink. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
