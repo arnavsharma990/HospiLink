@@ -1,23 +1,6 @@
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { 
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signInAnonymously,
-  RecaptchaVerifier,
-  signInWithPhoneNumber
-} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
-
-
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
-
-
+// Firebase configuration
 const firebaseConfig = {
-   apiKey: "AIzaSyC-reUZrvsdL7okXQpKYFroxC6irNy5XMU",
+  apiKey: "AIzaSyC-reUZrvsdL7okXQpKYFroxC6irNy5XMU",
   authDomain: "loginpage-b1b24.firebaseapp.com",
   projectId: "loginpage-b1b24",
   storageBucket: "loginpage-b1b24.firebasestorage.app",
@@ -26,145 +9,108 @@ const firebaseConfig = {
   measurementId: "G-886ZEPLWPS"
 };
 
+// Initialize Firebase (using compat version)
+firebase.initializeApp(firebaseConfig);
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app); // 
-const analytics = getAnalytics(app);
+// References to auth and forms
+const auth = firebase.auth();
+const signinForm = document.getElementById('signin-form');
+const signupForm = document.getElementById('signup-form');
 
-
-document.getElementById("signup-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    
-    const fullname = document.getElementById("fullname").value;
-    const email = document.getElementById("signup-email").value;
-    const password = document.getElementById("signup-password").value;
-    const confirmPassword = document.getElementById("confirm-password").value;
-    
-    if (password !== confirmPassword) {
-        alert("Passwords do not match!");
-        return;
-    }
-    
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            console.log("User Signed Up:", userCredential.user);
-            alert("Signup Successful! Now try logging in.");
-        })
-        .catch((error) => {
-            console.error("Signup Error:", error.message);
-            alert("Error: " + error.message);
-        });
-});
-
-
-document.getElementById("signin-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    
-    const email = document.getElementById("signin-email").value;
-    const password = document.getElementById("signin-password").value;
-    
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            console.log("User Logged In:", userCredential.user);
-            alert("Login Successful!");
-            window.location.href = "dashboard.html"; // Redirect after login
-        })
-        .catch((error) => {
-            console.error("Login Error:", error.message);
-            alert("Error: " + error.message);
-        });
-});
-
-
-window.logout = function () {
-    signOut(auth).then(() => {
-        alert("Logout Successful!");
-        window.location.href = "index.html"; // Redirect to login page
-    }).catch((error) => {
-        console.error("Logout Error:", error.message);
-    });
-};
-
-const googleProvider = new GoogleAuthProvider();
-
-document.getElementById("google-signin").addEventListener("click", () => {
-  signInWithPopup(auth, googleProvider)
-    .then((result) => {
-      console.log("Google User:", result.user);
-      alert("Google Sign-In Successful!");
-      window.location.href = "dashboard.html";
+// Email/Password Sign Up
+signupForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const fullname = document.getElementById('fullname').value;
+  const email = document.getElementById('signup-email').value;
+  const password = document.getElementById('signup-password').value;
+  const confirmPassword = document.getElementById('confirm-password').value;
+  const terms = document.getElementById('terms').checked;
+  
+  // Form validation
+  if (!fullname || !email || !password || !confirmPassword) {
+    alert('Please fill in all fields.');
+    return;
+  }
+  
+  if (password !== confirmPassword) {
+    alert('Passwords do not match.');
+    return;
+  }
+  
+  if (!terms) {
+    alert('Please agree to the Terms & Conditions.');
+    return;
+  }
+  
+  // Create user with email and password
+  auth.createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Update profile with fullname
+      return userCredential.user.updateProfile({
+        displayName: fullname
+      });
     })
-    .catch((error) => {
-      console.error("Google Sign-In Error:", error.message);
-    });
-});
-
-document.getElementById("anonymous-signin").addEventListener("click", () => {
-  signInAnonymously(auth)
     .then(() => {
-      console.log("Signed in anonymously");
-      alert("Anonymous Sign-In Successful!");
-      window.location.href = "dashboard.html";
+      // Redirect to home page on successful signup
+      window.location.href = "home.html";
     })
     .catch((error) => {
-      console.error("Anonymous Sign-In Error:", error.message);
+      // Handle errors
+      alert("Error: " + error.message);
     });
 });
 
-window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-  'size': 'invisible',
-  'callback': (response) => {
-    console.log("reCAPTCHA Verified");
+// Email/Password Sign In
+signinForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const email = document.getElementById('signin-email').value;
+  const password = document.getElementById('signin-password').value;
+  
+  if (!email || !password) {
+    alert('Please fill in all fields.');
+    return;
+  }
+  
+  // Sign in with email and password
+  auth.signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Redirect to home page on successful login
+      window.location.href = "home.html";
+    })
+    .catch((error) => {
+      // Handle errors
+      alert("Error: " + error.message);
+    });
+});
+
+// Google Sign In
+// Add click event handlers to all Google sign-in buttons
+const googleButtons = document.querySelectorAll('.social-button');
+googleButtons.forEach(button => {
+  if (button.querySelector('svg path[fill="#FFC107"]')) { // Google's yellow color in logo
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const provider = new firebase.auth.GoogleAuthProvider();
+      
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          // Redirect to home page on successful Google sign-in
+          window.location.href = "home.html";
+        })
+        .catch((error) => {
+          alert("Google Sign-In Error: " + error.message);
+        });
+    });
   }
 });
 
-
-document.getElementById("phone-signin").addEventListener("click", () => {
-  const phoneNumber = document.getElementById("phone-number").value;
-  const appVerifier = window.recaptchaVerifier;
-
-  signInWithPhoneNumber(auth, phoneNumber, appVerifier)
-    .then((confirmationResult) => {
-      const code = prompt("Enter the OTP sent to your phone:");
-      return confirmationResult.confirm(code);
-    })
-    .then((result) => {
-      console.log("Phone User:", result.user);
-      alert("Phone Sign-In Successful!");
-      window.location.href = "dashboard.html";
-    })
-    .catch((error) => {
-      console.error("Phone Sign-In Error:", error.message);
-    });
-});
-
-window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-  'size': 'invisible',
-  'callback': (response) => {
-    console.log("reCAPTCHA Verified");
+// Check if user is already signed in
+auth.onAuthStateChanged(user => {
+  if (user) {
+    // User is signed in, redirect to home page
+    window.location.href = "home.html";
   }
 });
-
-
-document.getElementById("phone-signin").addEventListener("click", () => {
-  const phoneNumber = document.getElementById("phone-number").value;
-  const appVerifier = window.recaptchaVerifier;
-
-  signInWithPhoneNumber(auth, phoneNumber, appVerifier)
-    .then((confirmationResult) => {
-      const code = prompt("Enter the OTP sent to your phone:");
-      return confirmationResult.confirm(code);
-    })
-    .then((result) => {
-      console.log("Phone User:", result.user);
-      alert("Phone Sign-In Successful!");
-      window.location.href = "dashboard.html";
-    })
-    .catch((error) => {
-      console.error("Phone Sign-In Error:", error.message);
-    });
-});
-
-
-
-export { auth };
