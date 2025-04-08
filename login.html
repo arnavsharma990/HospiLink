@@ -587,7 +587,7 @@
                             <a href="#">Forgot password?</a>
                         </div>
                         
-                        <a href="home.html" class="form-button">Sign In</a>
+                       <button type="submit" class="form-button">Sign In</button>
 
                         <style>
                             a{
@@ -682,103 +682,12 @@
             <div class="decorative-circle circle-2"></div>
             <div class="decorative-circle circle-3"></div>
         </main>
-    <script>
-  const firebaseConfig = {
-  apiKey: "AIzaSyC-reUZrvsdL7okXQpKYFroxC6irNy5XMU",
-  authDomain: "loginpage-b1b24.firebaseapp.com",
-  projectId: "loginpage-b1b24",
-  storageBucket: "loginpage-b1b24.firebasestorage.app",
-  messagingSenderId: "871935597767",
-  appId: "1:871935597767:web:8a437f39c1ea5b98c9f2e2",
-  measurementId: "G-886ZEPLWPS"
-  };
+    
 
-  firebase.initializeApp(firebaseConfig);
-</script>
-
-        <!-- Firebase SDK -->
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-    console.log("Firebase SDK Loaded");
-</script>
-<script type="module" src="firebase-auth.js"></script>
-    
-        <script>
-            // JavaScript to toggle between Sign In and Sign Up forms
-            const signinTab = document.getElementById('signin-tab');
-            const signupTab = document.getElementById('signup-tab');
-            const signinForm = document.getElementById('signin-form');
-            const signupForm = document.getElementById('signup-form');
-    
-            signinTab.addEventListener('click', () => {
-                signinTab.classList.add('active');
-                signupTab.classList.remove('active');
-                signinForm.classList.add('active');
-                signupForm.classList.remove('active');
-            });
-    
-            signupTab.addEventListener('click', () => {
-                signupTab.classList.add('active');
-                signinTab.classList.remove('active');
-                signupForm.classList.add('active');
-                signinForm.classList.remove('active');
-            });
-    
-            // Basic form validation for Sign In
-            document.getElementById('signin-form').addEventListener('submit', function(event) {
-                const email = document.getElementById('signin-email').value;
-                const password = document.getElementById('signin-password').value;
-    
-                if (!email || !password) {
-                    event.preventDefault();
-                    alert('Please fill in all fields.');
-                }
-            });
-    
-            // Basic form validation for Sign Up
-            document.getElementById('signup-form').addEventListener('submit', function(event) {
-                const fullname = document.getElementById('fullname').value;
-                const email = document.getElementById('signup-email').value;
-                const password = document.getElementById('signup-password').value;
-                const confirmPassword = document.getElementById('confirm-password').value;
-                const terms = document.getElementById('terms').checked;
-    
-                if (!fullname || !email || !password || !confirmPassword) {
-                    event.preventDefault();
-                    alert('Please fill in all fields.');
-                } else if (password !== confirmPassword) {
-                    event.preventDefault();
-                    alert('Passwords do not match.');
-                } else if (!terms) {
-                    event.preventDefault();
-                    alert('Please agree to the Terms & Conditions.');
-                }
-            });
-
-            
-        </script>
-        <script>
-  const provider = new firebase.auth.GoogleAuthProvider();
-
-  document.getElementById('google-login').addEventListener('click', function (e) {
-    e.preventDefault();
-
-    firebase.auth().signInWithPopup(provider)
-      .then((result) => {
-        const user = result.user;
-        console.log("Signed in as:", user.displayName);
-        // You can redirect to dashboard or show user info here
-        window.location.href = "dashboard.html"; // or any other page
-      })
-      .catch((error) => {
-        console.error("Google Sign-In Error:", error.message);
-      });
-  });
-</script>
-
-     <!-- Firebase SDK -->
+<!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth-compat.js"></script>
+<script src="firebase-auth.js"></script>
 
 
     </body>
