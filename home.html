@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
-    /* Premium Design System */
+
     :root {
       --primary: #0c4a6e;
       --primary-light: #0ea5e9;
@@ -47,7 +47,7 @@
       letter-spacing: -0.025em;
     }
     
-    /* Navigation */
+
     nav {
       background-color: var(--white);
       padding: 1rem 2rem;
@@ -111,7 +111,7 @@
       width: 100%;
     }
     
-    /* Hero Section */
+
     .hero {
       background: linear-gradient(to right, rgba(12, 74, 110, 0.9), rgba(6, 182, 212, 0.8)), url("/api/placeholder/1920/1080");
       background-size: cover;
@@ -171,7 +171,7 @@
       background: var(--primary-light);
     }
     
-    /* Main Content */
+
     main {
       max-width: 1400px;
       margin: 0 auto;
@@ -234,7 +234,7 @@
       box-shadow: var(--shadow-sm);
     }
     
-    /* Hospital Cards */
+
     .hospital-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -596,11 +596,10 @@
       </div>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="#">Hospitals</a></li>
-        <li><a href="#">Doctors</a></li>
-        <li><a href="#">Services</a></li>
+        
+      
         <li><a href="aboutus.html">About Us</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="contactus.html">Contact</a></li>
         <a href="hospiAi.html" class="nav-btn">
           <i class="fa-solid fa-square-h"></i>
           Ask AI
@@ -641,7 +640,7 @@
   </section>
   
   <main>
-    <!-- Hospital Section -->
+
     <h2 class="section-title">Our Premier Hospital Network</h2>
     <p class="subtitle">Discover world-class healthcare facilities with cutting-edge technology and renowned medical professionals</p>
     
@@ -656,7 +655,7 @@
     </div>
     
     <div class="hospital-grid">
-      <!-- Hospital 1 -->
+   
       <a href="hospitals/AIIMS.html">
       <div class="hospital-card">
         <div class="premium-badge">Premium</div>
@@ -697,7 +696,7 @@
         </div>
       </div></a>
       
-      <!-- Hospital 2 -->
+
       <a href="hospitals/rml.html">
       <div class="hospital-card">
         <div class="hospital-img">
@@ -737,7 +736,7 @@
         </div>
       </div></a>
       
-      <!-- Hospital 3 -->
+
       <a href="hospitals/safdarjung.html">
       <div class="hospital-card">
         <div class="premium-badge">Premium</div>
@@ -778,7 +777,7 @@
         </div>
       </div> </a>
       
-      <!-- Hospital 4 -->
+
       <a href="hospitals/gtb.html">
       <div class="hospital-card">
         <div class="hospital-img">
@@ -818,7 +817,7 @@
         </div>
       </div></a>
       
-      <!-- Hospital 5 -->
+
       <a href="hospitals/loknayak.html">
       <div class="hospital-card">
         <div class="hospital-img">
@@ -858,7 +857,7 @@
         </div>
       </div></a>
       
-      <!-- Hospital 6 -->
+
       <a href="hospitals/deepchandbandhu.html">
       <div class="hospital-card">
         <div class="premium-badge">Premium</div>
@@ -939,7 +938,7 @@
         </div>
       </div></a>
       
- <!-- Hospital 8 -->
+
       <a href="hospitals/Deen_Dayal_Upadhyay_Hospital.html">
 <div class="hospital-card">
   <div class="hospital-img">
@@ -979,7 +978,7 @@
   </div>
 </div></a>
 
-<!-- Hospital 9 -->
+
       <a href="hospitals/ArunaAsafAliHospital.html">
 <div class="hospital-card">
   <div class="hospital-img">
@@ -1019,7 +1018,7 @@
   </div>
 </div></a>
 
-<!-- Hospital 10 -->
+
       <a href="hospitals/ChachaNehruBalChikitsalaya.html">
 <div class="hospital-card">
   <div class="hospital-img">
@@ -1059,7 +1058,7 @@
   </div>
 </div></a>
 
-<!-- Hospital 11 -->
+
       <a href="hospitals/Dr.BabaSahebAmbedkarHospital.html">
 <div class="hospital-card">
   <div class="hospital-img">
@@ -1099,7 +1098,6 @@
   </div>
 </div></a>
 
-<!-- Hospital 12 -->
       <a href="hospitals/LalBahadurShastriHospital.html">
       
 <div class="hospital-card">
@@ -1141,13 +1139,13 @@
 </div></a>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Get the search input and button
+
   const searchInput = document.querySelector('.search-input');
   const searchBtn = document.querySelector('.search-btn');
   const hospitalCards = document.querySelectorAll('.hospital-card');
   const filterButtons = document.querySelectorAll('.filter-btn');
   
-  // Add data-filter attributes to filter buttons if they don't exist
+
   document.querySelector('.filter-btn:nth-child(1)').setAttribute('data-filter', 'all');
   document.querySelector('.filter-btn:nth-child(2)').setAttribute('data-filter', 'multispecialty');
   document.querySelector('.filter-btn:nth-child(3)').setAttribute('data-filter', 'cardiac-care');
@@ -1155,7 +1153,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('.filter-btn:nth-child(5)').setAttribute('data-filter', 'neurology');
   document.querySelector('.filter-btn:nth-child(6)').setAttribute('data-filter', 'pediatric');
   
-  // Create and append recommendations container
+
   const searchContainer = document.querySelector('.search-container');
   const recommendationsContainer = document.createElement('div');
   recommendationsContainer.className = 'search-recommendations';
@@ -1173,26 +1171,25 @@ document.addEventListener('DOMContentLoaded', function() {
   searchContainer.style.position = 'relative';
   searchContainer.appendChild(recommendationsContainer);
   
-  // Collect all searchable terms
+
   const searchTerms = {
     hospitals: [],
     specialties: [],
     features: []
   };
-  
-  // Populate searchable terms
+
   hospitalCards.forEach(card => {
-    // Hospital names
+
     const hospitalName = card.querySelector('h3').textContent.trim();
     searchTerms.hospitals.push(hospitalName);
     
-    // Specialties
+
     const specialty = card.querySelector('.specialty').textContent.trim();
     if (!searchTerms.specialties.includes(specialty)) {
       searchTerms.specialties.push(specialty);
     }
     
-    // Features
+
     const features = card.querySelectorAll('.feature span');
     features.forEach(feature => {
       const featureText = feature.textContent.trim();
@@ -1202,11 +1199,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Function to show recommendations
+
   function showRecommendations() {
     const searchTerm = searchInput.value.trim().toLowerCase();
     
-    // Clear previous recommendations
+
     recommendationsContainer.innerHTML = '';
     
     if (searchTerm.length < 2) {
@@ -1214,7 +1211,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
     
-    // Create arrays for matching terms
+
     const matchingHospitals = searchTerms.hospitals.filter(hospital => 
       hospital.toLowerCase().includes(searchTerm)
     );
@@ -1226,15 +1223,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const matchingFeatures = searchTerms.features.filter(feature => 
       feature.toLowerCase().includes(searchTerm)
     );
-    
-    // Combine all matches, limit to top 10
+
     const allMatches = [
       ...matchingHospitals.map(item => ({ text: item, type: 'Hospital' })),
       ...matchingSpecialties.map(item => ({ text: item, type: 'Specialty' })),
       ...matchingFeatures.map(item => ({ text: item, type: 'Feature' }))
     ].slice(0, 10);
     
-    // Display recommendations if we have matches
+
     if (allMatches.length > 0) {
       allMatches.forEach(match => {
         const recommendation = document.createElement('div');
@@ -1247,11 +1243,11 @@ document.addEventListener('DOMContentLoaded', function() {
         recommendation.style.alignItems = 'center';
         recommendation.style.borderBottom = '1px solid #f1f5f9';
         
-        // Create main text
+
         const textSpan = document.createElement('span');
         textSpan.textContent = match.text;
         
-        // Create type badge
+
         const typeSpan = document.createElement('span');
         typeSpan.textContent = match.type;
         typeSpan.style.fontSize = '0.75rem';
@@ -1264,7 +1260,7 @@ document.addEventListener('DOMContentLoaded', function() {
         recommendation.appendChild(textSpan);
         recommendation.appendChild(typeSpan);
         
-        // Hover effect
+  
         recommendation.addEventListener('mouseenter', () => {
           recommendation.style.backgroundColor = '#f1f5f9';
         });
@@ -1273,7 +1269,7 @@ document.addEventListener('DOMContentLoaded', function() {
           recommendation.style.backgroundColor = '#fff';
         });
         
-        // Click handler
+
         recommendation.addEventListener('click', () => {
           searchInput.value = match.text;
           recommendationsContainer.style.display = 'none';
@@ -1289,27 +1285,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Function to perform search
+
   function performSearch() {
     const searchTerm = searchInput.value.trim().toLowerCase();
     
-    // Hide recommendations
+
     recommendationsContainer.style.display = 'none';
     
-    // Get the active filter
+
     const activeFilter = document.querySelector('.filter-btn.active');
     const filterValue = activeFilter ? activeFilter.getAttribute('data-filter') : 'all';
     
-    // Filter hospitals based on both search term and active filter
+
     hospitalCards.forEach(card => {
       const hospitalName = card.querySelector('h3').textContent.trim().toLowerCase();
       const specialty = card.querySelector('.specialty').textContent.trim().toLowerCase();
       const features = card.querySelectorAll('.feature span');
       
-      // Check if search term matches hospital name, specialty, or features
+
       let matchFound = hospitalName.includes(searchTerm) || specialty.includes(searchTerm);
       
-      // Check features
+
       if (!matchFound) {
         features.forEach(feature => {
           if (feature.textContent.trim().toLowerCase().includes(searchTerm)) {
@@ -1318,19 +1314,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
       
-      // If no search term, consider it a match
+
       if (searchTerm === "") {
         matchFound = true;
       }
       
-      // Check if filter matches
+
       let filterMatch = filterValue === 'all';
       
       if (!filterMatch) {
-        // Transform specialty to match filter format
+
         const specialtyFormatted = specialty.toLowerCase();
         
-        // Map filter values to corresponding specialties
+
         const filterMap = {
           'multispecialty': ['multispecialty', 'multi-specialty'],
           'cardiac-care': ['cardiac care', 'cardiac', 'cardiology'],
@@ -1339,36 +1335,34 @@ document.addEventListener('DOMContentLoaded', function() {
           'pediatric': ['pediatric', 'pediatric care', 'pediatrics']
         };
         
-        // Check if specialty matches current filter
+
         if (filterMap[filterValue] && filterMap[filterValue].includes(specialtyFormatted)) {
           filterMatch = true;
         }
       }
-      
-      // Show or hide the card based on both search and filter match
+
       if (matchFound && filterMatch) {
-        card.closest('a').style.display = 'block'; // Find the parent <a> tag
+        card.closest('a').style.display = 'block'; 
       } else {
-        card.closest('a').style.display = 'none'; // Find the parent <a> tag
+        card.closest('a').style.display = 'none';
       }
     });
   }
   
-  // Function to handle filter button clicks
+
   function handleFilterClick(e) {
-    // Remove active class from all filter buttons
+
     filterButtons.forEach(btn => {
       btn.classList.remove('active');
     });
     
-    // Add active class to clicked button
+
     e.target.classList.add('active');
     
-    // Perform search with new filter
+
     performSearch();
   }
-  
-  // Event listeners
+
   searchInput.addEventListener('input', showRecommendations);
   searchBtn.addEventListener('click', performSearch);
   searchInput.addEventListener('keypress', function(e) {
@@ -1377,19 +1371,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Add event listeners to filter buttons
+
   filterButtons.forEach(btn => {
     btn.addEventListener('click', handleFilterClick);
   });
   
-  // Close recommendations when clicking outside
+
   document.addEventListener('click', function(e) {
     if (!searchContainer.contains(e.target)) {
       recommendationsContainer.style.display = 'none';
     }
   });
   
-  // Initialize with all hospitals showing
+
   document.querySelector('.filter-btn[data-filter="all"]')?.classList.add('active');
 });
 </script>
