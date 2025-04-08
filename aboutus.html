@@ -88,18 +88,24 @@
         }
         
         .team-member:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
         }
         
         .member-img {
-            height: 250px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 0.9rem;
-        }
+    height: 200px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Prevents image from overflowing */
+    border-radius: 8px; /* Optional: rounded corners for a cleaner look */
+}
+
+.member-img img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover; /* Ensures the image covers the space nicely */
+}
         
         .member-info {
             padding: 1.5rem;
@@ -236,44 +242,52 @@
                     <h3>Making Healthcare Accessible</h3>
                     <p>We believe that getting lost should never be a barrier to receiving care. Our solutions make healthcare facilities more accessible to everyone.</p>
                 </div>
+                <div class="benefit-card">
+                    <h3>Making Heathcare Navigation Easy</h3>
+                    <p>We believe that getting lost should never be a barrier to receiving care. Our solutions make healthcare facilities more accessible to everyone.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Making Healthcare Accessible</h3>
+                    <p>We believe that getting lost should never be a barrier to receiving care. Our solutions make healthcare facilities more accessible to everyone.</p>
+                </div>
             </div>
         </section>
         <section class="container">
             <h2>Our Team</h2>
             <div class="team-grid">
                 <div class="team-member">
-                    <div class="member-img">[Team Member Photo]</div>
+                    <div class="member-img"><img src="PHOTO-2025-04-08-12-22-32.jpg" alt=""></div>
                     <div class="member-info">
-                        <h3 class="member-name">Jane Chen</h3>
-                        <p class="member-title">Co-Founder & CEO</p>
-                        <p>With a background in healthcare administration, Jane recognized the challenges patients face when navigating large medical complexes. Her vision drives our mission to make hospitals more accessible for everyone.</p>
+                        <h3 class="member-name">Arnav Sharma</h3>
+                        <p class="member-title">UI Designer</p>
+                        <p>Made the Ui Look Attractive and Mordern</p>
                     </div>
                 </div>
                 
                 <div class="team-member">
-                    <div class="member-img">[Team Member Photo]</div>
+                    <div class="member-img"><img src="PHOTO-2025-04-08-12-34-24.jpg" alt=""></div>
                     <div class="member-info">
-                        <h3 class="member-name">Marcus Williams</h3>
-                        <p class="member-title">Co-Founder & Technical Lead</p>
-                        <p>Marcus brings his expertise in software development and location-based technologies to create intuitive navigation solutions that work seamlessly inside complex building structures.</p>
+                        <h3 class="member-name">Kushagra Harit</h3>
+                        <p class="member-title">FireBase Expert</p>
+                        <p>Kushagra Integrated login with the firebase</p>
                     </div>
                 </div>
                 
                 <div class="team-member">
-                    <div class="member-img">[Team Member Photo]</div>
+                    <div class="member-img"><img src="PHOTO-2025-04-08-12-11-36.jpg" alt=""></div>
                     <div class="member-info">
-                        <h3 class="member-name">Priya Sharma</h3>
+                        <h3 class="member-name">Dhairya Garg</h3>
                         <p class="member-title">UX Designer</p>
-                        <p>Priya's human-centered design approach ensures that HospiLink is accessible to users of all ages and technical abilities, making hospital navigation stress-free and intuitive.</p>
+                        <p>Dhairya human-centered design approach ensures that HospiLink is accessible to users of all ages and technical abilities, making hospital navigation stress-free and intuitive.</p>
                     </div>
                 </div>
                 
                 <div class="team-member">
-                    <div class="member-img">[Team Member Photo]</div>
+                    <div class="member-img"><img src="PHOTO-2025-04-08-12-33-03.jpg" alt=""></div>
                     <div class="member-info">
-                        <h3 class="member-name">David Lee</h3>
-                        <p class="member-title">Operations Manager</p>
-                        <p>David works directly with hospital administrators to implement HospiLink systems, ensuring seamless integration with existing hospital infrastructure and appointment systems.</p>
+                        <h3 class="member-name">Suyash Das</h3>
+                        <p class="member-title">ML Expert</p>
+                        <p>Suyash is ML Expert who created ChatBot for Effective use </p>
                     </div>
                 </div>
             </div>
